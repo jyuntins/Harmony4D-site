@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Harmony4D: A Video Dataset for In-The-Wild Close Human Interactions.">
+  <meta name="keywords" content="Human Pose Estimation, 3D Dataset, Multi-person Interaction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Harmony4D: A Video Dataset for In-The-Wild Close Human Interactions</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Harmony4D: A Video Dataset for In-The-Wild Close Human Interactions</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://rawalkhirodkar.github.io/">Rawal Khirodkar</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://jyuntins.github.io/">Jyun-Ting Song</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.jinkuncao.com/">Jinkun Cao</a><sup></sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.zhengyiluo.com/">Zhengyi Luo</a><sup></sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://kriskitani.github.io/">Kris Kitani</a><sup></sup>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup></sup>Carnegie Mellon University</span><br>
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Understanding how humans interact with each other is key to building realistic
+            multi-human virtual reality systems. This area remains relatively unexplored
+            due to the lack of large-scale datasets. Recent datasets focusing on this issue
+            mainly consist of activities captured entirely in controlled indoor environments
+            with choreographed actions, significantly affecting their diversity. To address this,
+            we introduce Harmony4D, a multi-view video dataset for human-human interaction
+            featuring in-the-wild activities such as wrestling, dancing, MMA, and more. We
+            use a flexible multi-view capture system to record these dynamic activities and
+            provide annotations for human detection, tracking, 2D/3D pose estimation, and
+            mesh recovery for closely interacting subjects. We propose a novel markerless
+            algorithm to track 3D human poses in severe occlusion and close interaction to
+            obtain our annotations with minimal manual intervention. Harmony4D consists
+            of 1.66 million images and 3.32 million human instances from more than 20
+            synchronized cameras with 208 video sequences spanning diverse environments
+            and 24 unique subjects. We rigorously evaluate existing state-of-the-art methods
+            for mesh recovery and highlight their significant limitations in modeling close
+            interaction scenarios. Additionally, we fine-tune a pre-trained HMR2.0 model on
+            Harmony4D and demonstrate an improved performance of 54.8% PVE in scenes
+            with severe occlusion and contact.
+          </p>
+          <!-- <p>
+            Our approach augments neural radiance fields
+            (NeRF) by optimizing an
+            additional continuous volumetric deformation field that warps each observed point into a
+            canonical 5D NeRF.
+            We observe that these NeRF-like deformation fields are prone to local minima, and
+            propose a coarse-to-fine optimization method for coordinate-based models that allows for
+            more robust optimization.
+            By adapting principles from geometry processing and physical simulation to NeRF-like
+            models, we propose an elastic regularization of the deformation field that further
+            improves robustness.
+          </p> -->
+          <!-- <p>
+            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
+            photos/videos into deformable NeRF
+            models that allow for photorealistic renderings of the subject from arbitrary
+            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
+            using a
+            rig with two mobile phones that take time-synchronized photos, yielding train/validation
+            images of the same pose at different viewpoints. We show that our method faithfully
+            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
+            fidelity.
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/Fk2nAgMI7uw"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<!-- <div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Video</h2>
+    <div class="publication-video">
+      <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Hugging</h2>
+        <!-- <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/Pce2oELb_Yo"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/Fk2nAgMI7uw"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/amJegoJqPLU"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/b26RqR6i_Vs"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/A4gKE9iLaTE"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/A8KQTSo2mzQ"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Multi View</h2>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Grappling</h2>
+        <!-- <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/vEWLmQ-gElE"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/1iwq2QmOvuM"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/rLa4gx4FWd0"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/806BvyQWN78"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/Vf450TTYwMc"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/-f_9JcETHFE"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Fencing</h2>
+        <!-- <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/Ap9PC-NJ2w8"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/HGKfiW-9mgY"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/CCfD-tAF7vQ"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/kH28U7kIukM"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/v_tpwjUMOhU"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/q6caSfo8Bgc"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Multi View</h2>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dancing</h2>
+        <!-- <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/2pY6sR1VYC0"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/plNcUKcCN0I"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/PiQ7l5yEyps"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/C1JrFcWNg7k"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/nIM03tDskwI"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/pdilnL7dJnU"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Multi View</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Karate</h2>
+        <!-- <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/lk0WokyqDxo"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/Y6RtsCzXS_s"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/zF6DXgwmQ5U"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/a6jxxC1rcd0"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/LqMdSD6796A"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/zgIEr_BKYKc"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Multi View</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">MMA</h2>
+        <!-- <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/iMQcYi78b2k"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/WvrxOCiuXJk"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Captured sequence from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/UPe3X6SB_jw"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/6uI2Mtghc5M"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">3D Poses from Multi View</h2>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <!-- <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p> -->
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/764ghl2-fYA"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Single View</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/fiHD4l-X2CI"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Human Meshes from Multi View</h2>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- </div>
+    </div> -->
+    <!--/ Animation. -->
+
+
+    <!-- </div> -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Demo of Collision Optimization </h2>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/_an1g2lFuY8"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Without Collision Optimization</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/Wh3EDVSxGm0"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">With Collision Optimization</h2>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Demo of Ego Views </h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Hugging </h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/KzxdaH97R70"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 1</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/X0SQxjjDsbo"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 2</h2>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Grappling </h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/XI7ukHiIom4"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 1</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/N-kly01Cr9g"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 2</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4"> Fencing </h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/FIgVVX57EhM"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 1</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/h-SHOPeers8"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 2</h2>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4"> Dancing </h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/e6UL95jqAH4"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 1</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/6W6tNJX7aF8"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 2</h2>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4"> Karate </h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/gqrIa7alOio"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 1</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/H-A0e5JTOV4"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 2</h2>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">MMA </h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/WDNCb37UYLQ"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 1</h2>
+        </div>  
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <iframe id="youtube-video" width="100%" height="280"
+              src="https://www.youtube.com/embed/8NeSXKThXtQ"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-7">Subject 2</h2>
+        </div>
+      </div>
+    </div> 
+
+</section>
+</div>
+
+  <!-- <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Demo of Ego View </h2>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-4">Grappling </h2>
+    </div>
+  </div>
+
+  <div class="columns is-centered">
+    <div class="column">
+      <div class="content">
+        <iframe id="youtube-video" width="100%" height="280"
+            src="https://www.youtube.com/embed/_an1g2lFuY8"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <h2 class="title is-7">Subject 1</h2>
+      </div>  
+    </div>
+
+    <div class="column">
+      <div class="content">
+        <iframe id="youtube-video" width="100%" height="280"
+            src="https://www.youtube.com/embed/Wh3EDVSxGm0"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <h2 class="title is-7">Subject 2</h2>
+      </div>
+    </div>
+  </div>
+  </section>
+  </div> -->
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
