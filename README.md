@@ -46,4 +46,3 @@ HMR2.0 model on Harmony4D and demonstrate an improved performance of
 
 ## Contact
 - For help and issues associated with Harmony4D, or reporting a bug, please open a [GitHub Issue](https://github.com/jyuntins/harmony4d).
-- Please contact [Rawal Khirodkar](https://rawalkhirodkar.github.io/) (`rawalk@meta.com`) or [Jyun-Ting Song](https://jyuntins.github.io/) (`jyuntins@andrew.cmu.edu`) for any queries.
