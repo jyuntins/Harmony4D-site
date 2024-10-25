@@ -10,7 +10,7 @@
 
 <sup>*</sup>equal contribution
 
-<p><a href="https://jyuntins.github.io/Harmony4D" style="background-color:#2ecc71; color:white; padding:10px; text-decoration:none; border-radius:5px;">Project Page</a></p>
+<p><a href="https://jyuntins.github.io/harmony4d" style="background-color:#2ecc71; color:white; padding:10px; text-decoration:none; border-radius:5px;">Project Page</a></p>
 
 </div>
 
