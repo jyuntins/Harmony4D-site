@@ -40,6 +40,17 @@ HMR2.0 model on Harmony4D and demonstrate an improved performance of
 “Harmony—a cohesive alignment of human behaviors.”
 </div>
 
+## BibTeX & Citation
+
+```
+@misc{2410.20294,
+Author = {Rawal Khirodkar and Jyun-Ting Song and Jinkun Cao and Zhengyi Luo and Kris Kitani},
+Title = {Harmony4D: A Video Dataset for In-The-Wild Close Human Interactions},
+Year = {2024},
+Eprint = {arXiv:2410.20294},
+}
+```
+
 ## Acknowledgement
 [Aria Toolkit](https://github.com/facebookresearch/projectaria_tools), [COLMAP](https://github.com/colmap/colmap), [mmpose](https://github.com/open-mmlab/mmpose/tree/main), [mmhuman3D](https://github.com/open-mmlab/mmhuman3d), [CLIFF](https://github.com/haofanwang/CLIFF), [timm](https://github.com/rwightman/pytorch-image-models), [detectron2](https://github.com/facebookresearch/detectron2), [mmcv](https://github.com/open-mmlab/mmcv), [mmdet](https://github.com/open-mmlab/mmdetection), [mmtrack](https://github.com/open-mmlab/mmtracking).
 
