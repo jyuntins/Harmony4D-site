@@ -1,8 +1,0 @@
-path:
-  ground_truth_path: /media/rawalk/disk1/rawalk/datasets/ego_exo/main/camera_ready/testing
-  predictions_path: /media/rawalk/disk1/rawalk/datasets/ego_exo/main/inference
-  smpl_faces_path: /home/rawalk/Desktop/ego/ego_exo/scripts/benchmark/harmony4d_evaluation/assets/smpl_faces.npy
-method: romp
-big_sequence: 16_grappling3
-sequence: 035_grappling3
-output_dir: ../evaluation_result
