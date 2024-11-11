@@ -40,6 +40,20 @@ HMR2.0 model on Harmony4D and demonstrate an improved performance of
 “Harmony—a cohesive alignment of human behaviors.”
 </div>
 
+## Overview
+
+<div style="text-align:center;">
+    <img src="assets/grappling.gif" alt="grappling GIF">
+</div>
+
+
+![summary_tab](assets/teaser.png)
+
+## Get Started
+- [🛠️Installation](assets/INSTALL.md)
+- [📘Download Data](assets/DOWNLOAD.md)
+- [👀Visualization](assets/VISUALIZE.md)
+
 ## BibTeX & Citation
 
 ```
