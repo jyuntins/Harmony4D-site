@@ -41,3 +41,9 @@ chmod +x 1_poses3d_ego_exo.sh
 ```
 
 The images will be saved to ```$SEQUENCE_ROOT_DIR/$BIG_SEQUENCE/$SEQUENCE/processed_data/vis_poses3d```
+
+### Annotation Description
+- 3D Pose: Provided in the COCO-WholeBody format. For more details, refer to [here](https://github.com/open-mmlab/mmpose/blob/0.x/configs/_base_/datasets/coco.py).
+- SMPL Joints: Joint locations are derived using the SMPL_45 regressor. The first 24 joints match the standard SMPL joints. For information of additional joints, refer to [this script].(https://github.com/vchoutas/smplx/blob/2144d5ca0272275e1b6f82af2a476d1f2c606814/smplx/vertex_joint_selector.py#L38)
+- 2D Pose: Provided in the SMPL_45 format.
+- Bounding Box: Generated from projected SMPL meshes.
